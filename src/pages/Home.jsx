@@ -1,5 +1,47 @@
+import { Carousel } from "react-bootstrap";
+
 function HomePage() {
-  return <div>Home Page</div>;
+  return (
+    <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://w7.pngwing.com/pngs/744/638/png-transparent-coffee-bean-espresso-caffxe8-macchiato-coffee-beans-cafe-coffee-cocoa-bean.png"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://w7.pngwing.com/pngs/1015/132/png-transparent-coffee-beans-coffee-theme-beautifully-cafe-advertising-coffee.png"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://w7.pngwing.com/pngs/744/638/png-transparent-coffee-bean-espresso-caffxe8-macchiato-coffee-beans-cafe-coffee-cocoa-bean.png"
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
 }
 
 export default HomePage;
