@@ -8,6 +8,19 @@ function NavbarComp() {
     navigate(path);
   };
 
+  const checkLogin = () => {
+    if (localStorage.getItem('userLogin')) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const logout = () => {
+    localStorage.removeItem('userLogin')
+    window.location.reload()
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg">
       <Navbar.Brand onClick={() => movePage("/")}>Logo Brand</Navbar.Brand>
@@ -17,10 +30,16 @@ function NavbarComp() {
           <Nav.Link>Sub Nav 1</Nav.Link>
           <Nav.Link>Sub Nav 2</Nav.Link>
         </Nav>
-        <Nav>
-          <Nav.Link onClick={() => movePage("/login")}>Login</Nav.Link>
-          <Nav.Link onClick={() => movePage("/register")}>Register</Nav.Link>
-        </Nav>
+        {
+          checkLogin()
+          ? <Nav>
+              <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+            </Nav>
+          : <Nav>
+              <Nav.Link onClick={() => movePage("/login")}>Login</Nav.Link>
+              <Nav.Link onClick={() => movePage("/register")}>Register</Nav.Link>
+            </Nav>
+        }
       </Navbar.Collapse>
     </Navbar>
   );
