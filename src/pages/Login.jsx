@@ -9,7 +9,6 @@ function LoginPage() {
     password: ''
   })
 
-  const [ showError, setShowError ] = useState(false)
   const changeEmail = (e) => {
     // console.log(e.target?.value)
     const value = e.target?.value
@@ -54,7 +53,6 @@ function LoginPage() {
           navigate('/')
         } else {
           console.log('dia gagal login')
-          // setShowError(true)
           toast.error('Invalid Auth !', {
             position: "top-center",
             autoClose: 5000,
