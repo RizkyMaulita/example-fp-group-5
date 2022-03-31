@@ -1,4 +1,5 @@
 import { Carousel } from "react-bootstrap";
+import ayamImg from '../assets/img/ayam.jpg'
 
 function HomePage() {
   return (
@@ -6,7 +7,8 @@ function HomePage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://w7.pngwing.com/pngs/744/638/png-transparent-coffee-bean-espresso-caffxe8-macchiato-coffee-beans-cafe-coffee-cocoa-bean.png"
+          src={ayamImg}
+          // src="https://w7.pngwing.com/pngs/744/638/png-transparent-coffee-bean-espresso-caffxe8-macchiato-coffee-beans-cafe-coffee-cocoa-bean.png"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -17,7 +19,8 @@ function HomePage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://w7.pngwing.com/pngs/1015/132/png-transparent-coffee-beans-coffee-theme-beautifully-cafe-advertising-coffee.png"
+          src="https://res.cloudinary.com/dxdgvvdwi/image/upload/v1648564810/ayam3_nawqor.jpg"
+          // src="https://w7.pngwing.com/pngs/1015/132/png-transparent-coffee-beans-coffee-theme-beautifully-cafe-advertising-coffee.png"
           alt="Second slide"
         />
 
@@ -29,7 +32,8 @@ function HomePage() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://w7.pngwing.com/pngs/744/638/png-transparent-coffee-bean-espresso-caffxe8-macchiato-coffee-beans-cafe-coffee-cocoa-bean.png"
+          src="https://res.cloudinary.com/dxdgvvdwi/image/upload/v1648564808/ayam2_lobqjj.jpg"
+          // src="https://w7.pngwing.com/pngs/744/638/png-transparent-coffee-bean-espresso-caffxe8-macchiato-coffee-beans-cafe-coffee-cocoa-bean.png"
           alt="Third slide"
         />
 
