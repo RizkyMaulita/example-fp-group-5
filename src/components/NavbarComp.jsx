@@ -1,8 +1,12 @@
 import { Navbar, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 function NavbarComp() {
   const navigate = useNavigate();
+  const cart = useSelector(state => state.cart)
 
   const movePage = (path) => {
     navigate(path);
@@ -33,9 +37,17 @@ function NavbarComp() {
         {
           checkLogin()
           ? <Nav>
+              <Nav.Link onClick={() => movePage("/cart")}>
+                  {cart?.length ? cart?.length : ''}
+                <FontAwesomeIcon icon={faCartPlus} style={{ marginLeft: '5px' }}  />
+              </Nav.Link>
               <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
             </Nav>
           : <Nav>
+              <Nav.Link onClick={() => movePage("/cart")}>
+                {cart?.length ? cart?.length : '' }
+                <FontAwesomeIcon icon={faCartPlus} style={{ marginLeft: '5px' }} />
+              </Nav.Link>
               <Nav.Link onClick={() => movePage("/login")}>Login</Nav.Link>
               <Nav.Link onClick={() => movePage("/register")}>Register</Nav.Link>
             </Nav>

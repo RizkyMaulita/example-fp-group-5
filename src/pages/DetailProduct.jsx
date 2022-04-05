@@ -20,6 +20,13 @@ function DetailProduct() {
     }
   }, [params]);
 
+  const checkSoldout = () => {
+    if (product?.quantity > 0) {
+      return false
+    } else {
+      return true
+    }
+  } 
   return (
     <div>
       <h1 style={{ textAlign: "center", margin: "30px 0" }}> Detail </h1>
@@ -39,7 +46,11 @@ function DetailProduct() {
 
           <p>Rp. {Number(product?.price).toLocaleString("id-ID")}</p>
 
-          <FontAwesomeIcon icon={faCartPlus} />
+          {
+            checkSoldout()
+            ? null
+            : <FontAwesomeIcon icon={faCartPlus} />
+          }
         </div>
       </div>
     </div>
