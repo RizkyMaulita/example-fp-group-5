@@ -22,6 +22,7 @@ function NavbarComp() {
 
   const logout = () => {
     localStorage.removeItem('userLogin')
+    localStorage.removeItem('userLoginID')
     window.location.reload()
   }
 

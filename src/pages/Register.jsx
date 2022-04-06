@@ -79,6 +79,7 @@ function RegisterPage() {
           // jika berhasil register, asumsikan dia sudah auto login
           // so tinggal kita masukkan auth login di localstorage
           localStorage.setItem('userLogin', form.email)
+          localStorage.setItem('userLoginID', data?.id)
           navigate('/')
         })
         .catch(err => console.log(err))

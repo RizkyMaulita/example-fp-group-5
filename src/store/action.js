@@ -18,7 +18,7 @@ export const addToCart = (product) => {
     console.log(product, '<<< product untuk dimasukkin ke cart')
     const cart = getState().cart
     console.log(cart, '<<< cart')
-
+    let total = 0
     const findCart = cart?.find(cp => cp?.id === product?.id)
     let newCart = []
     if (findCart) { // jika sebelumnya sudah pernah masukin product 
@@ -31,11 +31,13 @@ export const addToCart = (product) => {
           } else {
             cp.quantityOrder++
           }
-        }
+        } 
+        total += (cp.quantityOrder * cp.price)
         return cp
       })
     } else {
       product.quantityOrder = 1
+      total = getState().total + product.price
       newCart = [
         ...cart,
         product
@@ -46,6 +48,12 @@ export const addToCart = (product) => {
       payload: newCart
     }
     dispatch(action)
+
+    const actionTotal = {
+      type: 'getTotal',
+      payload: total
+    }
+    dispatch(actionTotal)
   }
 }
 
@@ -54,13 +62,15 @@ export const subCart = (product) => {
     const cart = getState().cart
 
     const newCart = []
-    
+    let total = 0
+
     for (let i = 0; i < cart?.length; i++) {
       const cp = cart[i]
       if (cp?.id === product?.id) {
         cp.quantityOrder--
       }
       if (cp.quantityOrder > 0) {
+        total += (cp.quantityOrder * cp.price)
         newCart.push(cp)
       }
     }
@@ -70,6 +80,12 @@ export const subCart = (product) => {
       payload: newCart
     }
     dispatch(action)
+
+    const actionTotal = {
+      type: 'getTotal',
+      payload: total
+    }
+    dispatch(actionTotal)
   }
 }
 
@@ -78,10 +94,12 @@ export const removeCart = (product) => {
     const cart = getState().cart
 
     const newCart = []
-    
+    let total = 0
+
     for (let i = 0; i < cart?.length; i++) {
       const cp = cart[i]
       if (cp?.id !== product?.id) {
+        total += (cp.quantityOrder * cp.price)
         newCart.push(cp)
       }
     }
@@ -91,5 +109,27 @@ export const removeCart = (product) => {
       payload: newCart
     }
     dispatch(action)
+
+    const actionTotal = {
+      type: 'getTotal',
+      payload: total
+    }
+    dispatch(actionTotal)
+  }
+}
+
+export const resetCart = () => {
+  return (dispatch, getState) => {
+    const action = {
+      type: 'getCart',
+      payload: []
+    }
+    dispatch(action)
+
+    const actionTotal = {
+      type: 'getTotal',
+      payload: 0
+    }
+    dispatch(actionTotal)
   }
 }
