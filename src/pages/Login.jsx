@@ -1,13 +1,16 @@
 import { Form, Button, Container } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+
 function LoginPage() {
   const navigate = useNavigate()
   const [ form, setForm ] = useState({
     email: '',
     password: ''
   })
+  const location = useLocation()
+  const fromState = location?.state?.from
 
   const changeEmail = (e) => {
     // console.log(e.target?.value)
@@ -49,8 +52,13 @@ function LoginPage() {
             draggable: true,
             progress: undefined,
           })
+          // console.log(location)
           localStorage.setItem('userLogin', form.email)
-          navigate('/')
+          if (fromState?.pathname) {
+            navigate(fromState?.pathname)
+          } else {
+            navigate('/')
+          }
         } else {
           console.log('dia gagal login')
           toast.error('Invalid Auth !', {

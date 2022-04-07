@@ -7,6 +7,8 @@ import NavbarComp from "./components/NavbarComp";
 import { Container } from "react-bootstrap";
 import ProductsPage from "./pages/ProductsPage";
 import DetailProduct from "./pages/DetailProduct";
+import MoviesPage from './pages/MoviesPage'
+import DetailMovie from "./pages/DetailMovie";
 
 export default function App() {
   return (
@@ -18,6 +20,9 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/products" element={<ProductsPage />}></Route>
         <Route path="/product/:id" element={<DetailProduct />}></Route>
+        <Route path="/movies" element={<MoviesPage />}></Route>
+        <Route path="/movie/:id" element={<DetailMovie />}></Route>
+
       </Routes>
     </Container>
   );
